@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"  >
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.8/dist/css/uikit.min.css" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body  style="background:#dedede61">
+    <nav class="uk-navbar-container uk-margin" uk-navbar style="background:#1f1f1f">
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">NotesApp</a>
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="/note">API NOTE</a></li>
+                <li><a href="/user">API USER</a></li>
+            </ul>
+
+        </div>
+        <div class="uk-navbar-right">
+
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1">
+                        <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <div class="uk-container uk-container-xsmall">
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <table class="uk-table uk-table-hover uk-table-divider" >
+                        <caption>List Notes</caption>
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>User</th>
+                        </tr>
+                        </thead>
+                        </tfoot>
+                        <tbody >
+                            <tr  th:each="note : ${notesList}" >
+                                <td  th:text="${note.title}">Table Data</td>
+                                <td th:text="${note.description}">Table Data</td>
+                                <td th:text="${note.user.userName}">Table Data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.8/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.8/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>
